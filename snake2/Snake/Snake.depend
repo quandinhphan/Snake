@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1586165370 source:c:\users\lenovo\documents\snake\snake\snake.cpp
+	<bits/stdc++.h>
+	<SDL.h>
+	"SDL_utils.h"
+
+1586161030 c:\users\lenovo\documents\snake\snake\sdl_utils.h
+	<bits/stdc++.h>
+	<SDL.h>
+
+1586161030 source:c:\users\lenovo\documents\snake\snake\sdl_utils.cpp
+	"SDL_utils.h"
+
