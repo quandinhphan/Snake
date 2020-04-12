@@ -96,7 +96,7 @@ struct Box{
         filled_rect.y = ysquare;
         filled_rect.w = wsquare;
         filled_rect.h = hsquare;
-        SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255)
+        SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
         SDL_RenderDrawRect(renderer, &filled_rect);
     }
 };
