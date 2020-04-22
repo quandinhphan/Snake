@@ -1,0 +1,15 @@
+
+Snake/bin/Debug/Snake.exe
+Snake/obj/Debug/SDL_utils.o
+Snake/obj/Debug/Snake.o
+Snake/SDL2.dll
+Snake/Snake.cbp
+Snake/Snake.depend
+Snake/Snake.layout
+Snake.o
+Snake/libjpeg-9.dll
+Snake/libpng16-16.dll
+Snake/libtiff-5.dll
+Snake/libwebp-7.dll
+Snake/SDL2_image.dll
+Snake/zlib1.dll
