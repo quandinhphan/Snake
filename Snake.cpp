@@ -55,12 +55,12 @@ int main(int argc, char* argv[])
 
     SDL_Event e;
 
-    const string filename1="E:/snake2.png";
+    const string filename1="snake2.png";
     SDL_Texture* texture1=LoadTexture(filename1);
     SDL_Rect SourceRect1=SourceRect(texture1);
     SDL_Rect desRect1=desRect(0,300,600,300);
 
-    const string filename2="E:/menu.png";
+    const string filename2="menu.png";
     SDL_Texture* texture2=LoadTexture(filename2);
     SDL_Rect SourceRect2=SourceRect(texture2);
     SDL_Rect desRect2=desRect(0,0,600,600);
