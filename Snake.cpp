@@ -114,6 +114,7 @@ int main(int argc, char* argv[])
     SDL_DestroyTexture(texture1);
     SDL_DestroyTexture(texture2);
     SDL_DestroyTexture(texture3);
+    SDL_DestroyTexture(texture4);
     quitSDL(window, renderer);
 
     return 0;
