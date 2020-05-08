@@ -6,8 +6,8 @@
 #include <SDL_image.h>
 using namespace std;
 
-void Gameplay(SDL_Renderer* renderer, SDL_Texture* texture1, SDL_Rect SourceRect1, SDL_Rect desRect1);
+void Gameplay(SDL_Renderer* renderer, SDL_Texture* texture1, SDL_Rect SourceRect1, SDL_Rect desRect1, SDL_Texture* texture3, SDL_Rect SourceRect3, SDL_Rect desRect3, const int a);
 
-void Menurunning(SDL_Renderer* renderer, SDL_Texture* texture2, SDL_Rect SourceRect2, SDL_Rect desRect2);
+void MenurunningOrGamemode(SDL_Renderer* renderer, SDL_Texture* texture2, SDL_Rect SourceRect2, SDL_Rect desRect2);
 
 #endif // GAME_H

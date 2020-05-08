@@ -8,7 +8,7 @@ using namespace std;
 
 const int xsquare=5;
 const int ysquare=5;
-const int wsquare=600-15;
+const int wsquare=300-15;
 const int hsquare=(600/2)-5;
 const int rad=5;
 const int stepchange=2*rad;
@@ -28,7 +28,7 @@ struct Cycle{
     Cycle(){}
 
     void render(SDL_Renderer* renderer){
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+        SDL_SetRenderDrawColor(renderer, 255, 50, 0, 255);
         for (int angle = 0; angle < 360; angle++) {
             int xx0, yy0;
             int xx = x + rad * cos(angle);
@@ -77,6 +77,22 @@ struct Cycle{
             y=hsquare-rad;
         }
     }
+    bool hitthewall(){
+        if(x>wsquare-rad){
+            return false;
+        }
+        else if(x<xsquare+rad){
+            return false;
+        }
+        if(y>hsquare-rad){
+            return false;
+        }
+        else if(y<ysquare+rad){
+            return false;
+        }
+        return true;
+    }
+
     void createFood(){
         do{
             x=rand()%wsquare+xsquare;
@@ -93,7 +109,7 @@ struct Box{
         filled_rect.y = ysquare;
         filled_rect.w = wsquare;
         filled_rect.h = hsquare;
-        SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderDrawRect(renderer, &filled_rect);
     }
 };

@@ -55,18 +55,34 @@ int main(int argc, char* argv[])
 
     SDL_Event e;
 
-    const string filename1="snake2.png";
+    const string filename0="boxmode.png";
+    SDL_Texture* texture0=LoadTexture(filename0);
+    SDL_Rect SourceRect0=SourceRect(texture0);
+    SDL_Rect desRect0=desRect(290,5,310,295);
+
+    const string filename1="classicmode.png";
     SDL_Texture* texture1=LoadTexture(filename1);
     SDL_Rect SourceRect1=SourceRect(texture1);
-    SDL_Rect desRect1=desRect(0,300,600,300);
+    SDL_Rect desRect1=desRect(290,5,310,295);
 
     const string filename2="menu.png";
     SDL_Texture* texture2=LoadTexture(filename2);
     SDL_Rect SourceRect2=SourceRect(texture2);
     SDL_Rect desRect2=desRect(0,0,600,600);
 
+    const string filename3="keys.png";
+    SDL_Texture* texture3=LoadTexture(filename3);
+    SDL_Rect SourceRect3=SourceRect(texture3);
+    SDL_Rect desRect3=desRect(0,300,600,300);
+
+    const string filename4="gamemode.png";
+    SDL_Texture* texture4=LoadTexture(filename4);
+    SDL_Rect SourceRect4=SourceRect(texture4);
+    SDL_Rect desRect4=desRect(0,0,600,600);
+
+
     while(true){
-        Menurunning(renderer, texture2, SourceRect2, desRect2);
+        MenurunningOrGamemode(renderer, texture2, SourceRect2, desRect2);
         if ( SDL_PollEvent(&e) == 0) continue;
         if (e.type == SDL_QUIT) break;
         if (e.type == SDL_KEYDOWN) {
@@ -74,13 +90,30 @@ int main(int argc, char* argv[])
                 break;
             }
             if(e.key.keysym.sym!=SDLK_ESCAPE){
-                Gameplay(renderer, texture1, SourceRect1, desRect1);
+                while(true){
+                    MenurunningOrGamemode(renderer, texture4, SourceRect4, desRect4);
+                    if ( SDL_PollEvent(&e) == 0) continue;
+                    if (e.type == SDL_QUIT) break;
+                    if (e.type == SDL_KEYDOWN) {
+                        if(e.key.keysym.sym==SDLK_ESCAPE){
+                            break;
+                        }
+                        else if(e.key.keysym.sym==SDLK_w){
+                            Gameplay(renderer, texture1, SourceRect1, desRect1, texture3, SourceRect3, desRect3, 1);
+                        }
+                        else if(e.key.keysym.sym==SDLK_s){
+                            Gameplay(renderer, texture0, SourceRect0, desRect0, texture3, SourceRect3, desRect3, 0);
+                        }
+                    }
+                }
             }
         }
     }
 
+    SDL_DestroyTexture(texture0);
     SDL_DestroyTexture(texture1);
     SDL_DestroyTexture(texture2);
+    SDL_DestroyTexture(texture3);
     quitSDL(window, renderer);
 
     return 0;
