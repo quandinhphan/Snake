@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
     SDL_Rect SourceRect1=SourceRect(texture1);
     SDL_Rect desRect1=desRect(290,5,310,295);
 
-    const string filename2="menu.png";
+    const string filename2="menu1.png";
     SDL_Texture* texture2=LoadTexture(filename2);
     SDL_Rect SourceRect2=SourceRect(texture2);
     SDL_Rect desRect2=desRect(0,0,600,600);
@@ -80,29 +80,39 @@ int main(int argc, char* argv[])
     SDL_Rect SourceRect4=SourceRect(texture4);
     SDL_Rect desRect4=desRect(0,0,600,600);
 
-
     while(true){
-        MenurunningOrGamemode(renderer, texture2, SourceRect2, desRect2);
+       MenurunningOrGamemode(renderer, texture2, SourceRect2, desRect2);
         if ( SDL_PollEvent(&e) == 0) continue;
         if (e.type == SDL_QUIT) break;
-        if (e.type == SDL_KEYDOWN) {
-            if(e.key.keysym.sym==SDLK_ESCAPE){
-                break;
-            }
-            if(e.key.keysym.sym!=SDLK_ESCAPE){
-                while(true){
-                    MenurunningOrGamemode(renderer, texture4, SourceRect4, desRect4);
-                    if ( SDL_PollEvent(&e) == 0) continue;
-                    if (e.type == SDL_QUIT) break;
-                    if (e.type == SDL_KEYDOWN) {
-                        if(e.key.keysym.sym==SDLK_ESCAPE){
-                            break;
-                        }
-                        else if(e.key.keysym.sym==SDLK_w){
-                            Gameplay(renderer, texture1, SourceRect1, desRect1, texture3, SourceRect3, desRect3, 1);
-                        }
-                        else if(e.key.keysym.sym==SDLK_s){
-                            Gameplay(renderer, texture0, SourceRect0, desRect0, texture3, SourceRect3, desRect3, 0);
+        if (e.type == SDL_MOUSEBUTTONDOWN) {
+
+            int x=e.motion.x;
+            int y=e.motion.y;
+            SDL_GetMouseState(&x,&y);
+
+            if(e.button.button==SDL_BUTTON_LEFT){
+
+                if(x>200&&x<350&&y>525&&y<595){
+                    break;
+                }
+                else if(x>200&&x<350&&y>450&&y<520){
+
+                    while(true){
+                        MenurunningOrGamemode(renderer, texture4, SourceRect4, desRect4);
+                        if ( SDL_PollEvent(&e) == 0) continue;
+                        if (e.type == SDL_MOUSEBUTTONDOWN) {
+                            SDL_GetMouseState(&x,&y);
+                            if(e.button.button==SDL_BUTTON_LEFT){
+
+                                if(x>10&&x<300&&y>150&&y<500){
+                                    ClassicMode(renderer, texture1, SourceRect1, desRect1, texture3, SourceRect3, desRect3);
+                                    break;
+                                }
+                                else if(x>300&&x<590&&y>150&&y<500){
+                                    BoxMode(renderer, texture0, SourceRect0, desRect0, texture3, SourceRect3, desRect3);
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
