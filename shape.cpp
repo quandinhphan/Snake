@@ -12,7 +12,7 @@ void runfaster(int &m){
                 m=m-0.1;
             }
             else
-                m=m-0.001;
+                m=m/2;
         }
     }
 }

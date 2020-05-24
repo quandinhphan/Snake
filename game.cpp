@@ -36,6 +36,9 @@ void ClassicMode(SDL_Renderer* renderer, SDL_Texture* texture1, SDL_Rect SourceR
             cycle[i].y0=cycle[i].y;
             cycle[i].x=cycle[i-1].x0;
             cycle[i].y=cycle[i-1].y0;
+            if(cycle[i].x==cycle[0].x&&cycle[i].y==cycle[0].y){
+                dem++;
+            }
         }
         cout << cycle[0].x << " " << cycle[0].y << " " << randcycle.x << " " << randcycle.y << endl;
 
@@ -106,12 +109,6 @@ void ClassicMode(SDL_Renderer* renderer, SDL_Texture* texture1, SDL_Rect SourceR
                     }
                 case SDLK_SPACE:waitUntilKeyPressed(); break;
                 default: break;
-            }
-        }
-
-        for(int i=2;i<snakepoint;i++){
-            if(cycle[i].x==cycle[0].x&&cycle[i].y==cycle[0].y){
-                dem++;
             }
         }
     }
@@ -155,6 +152,9 @@ void BoxMode(SDL_Renderer* renderer, SDL_Texture* texture1, SDL_Rect SourceRect1
             cycle[i].y0=cycle[i].y;
             cycle[i].x=cycle[i-1].x0;
             cycle[i].y=cycle[i-1].y0;
+            if(cycle[i].x==cycle[0].x&&cycle[i].y==cycle[0].y){
+                dem++;
+            }
         }
         cout << cycle[0].x << " " << cycle[0].y << " " << randcycle.x << " " << randcycle.y << endl;
 
@@ -225,13 +225,6 @@ void BoxMode(SDL_Renderer* renderer, SDL_Texture* texture1, SDL_Rect SourceRect1
                     }
                 case SDLK_SPACE:waitUntilKeyPressed(); break;
                 default: break;
-            }
-        }
-
-
-        for(int i=2;i<snakepoint;i++){
-            if(cycle[i].x==cycle[0].x&&cycle[i].y==cycle[0].y){
-                dem++;
             }
         }
     }
